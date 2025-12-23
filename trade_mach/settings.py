@@ -79,6 +79,7 @@ REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES':[
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:5173",
+    "https://trademach.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
