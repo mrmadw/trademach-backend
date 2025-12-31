@@ -81,6 +81,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:5173",
     "https://trademach.vercel.app",
     "https://trademach-bjdr2m39b-mrmadws-projects.vercel.app",
+    "https://www.trademach.site",
 
 ]
 
