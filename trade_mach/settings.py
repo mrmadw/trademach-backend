@@ -80,8 +80,6 @@ MIDDLEWARE = [
     
 ]
 
-REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES':[
-'rest_framework.permissions.AllowAny']}
 
 
 CORS_ORIGIN_WHITELIST = [
@@ -169,12 +167,21 @@ AUTH_USER_MODEL = 'users.NewUser'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
 }
+
 
 
 SIMPLE_JWT ={
