@@ -1,8 +1,9 @@
 from django.urls import path
 from .views import(get_user, get_listings, create_listing, 
-	NewUserView, logout_view, delete_listing, my_listings, CookieTokenRefreshView, CookieTokenObtainPairView
+	NewUserView, logout_view, delete_listing, my_listings, CookieTokenRefreshView, CookieTokenObtainPairView,
 ) 
 urlpatterns = [
+#	path("auth/google/", GoogleLogin.as_view()),
 	path('user', get_user, name='get_user_root'), 
 	path('get_listings', get_listings, name='get_listings_root'),
 	path('create-listing/', create_listing, name='create-listing'),

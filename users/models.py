@@ -19,8 +19,13 @@ class CustomAccountManager(BaseUserManager):
             raise ValueError(_('You must provide an email address'))
 
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_password(password)
+        user = self.model(email=email, **extra_fields)       
+
+        if password:
+            user.set_password(password)
+        else:
+            user.set_unusable_password()
+
         user.save(using=self._db)
         return user
 
@@ -49,7 +54,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
 
     # Optional, public profile
-    username = models.CharField(max_length=150, unique=True)
+    username = models.CharField(max_length=150, blank=True)
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
     phone = models.CharField(max_length=20, blank=True)
@@ -66,7 +71,8 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username", "first_name"]  # Prompted when creating superuser via CLI
+    REQUIRED_FIELDS = []  
+   # REQUIRED_FIELDS = ["username", "first_name"]   Uncomment when you want to create superuser. Make sure to comment out the one above!
 
     def __str__(self):
         return self.email
