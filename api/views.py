@@ -51,7 +51,7 @@ class CookieTokenRefreshView(TokenRefreshView):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def create_listing(request):
     serializer = ListingSerializer(data=request.data)
 
@@ -63,7 +63,7 @@ def create_listing(request):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def delete_listing(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
 
@@ -77,13 +77,14 @@ def delete_listing(request, pk):
     return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 def get_user(request):
     serializer = NewUserSerializer(request.user)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
+@permission_classes([AllowAnny])
 def get_listings(request):
     listings = Listing.objects.all()
     serializer = ListingSerializer(listings, many=True)
