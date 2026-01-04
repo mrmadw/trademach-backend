@@ -22,6 +22,7 @@ from rest_framework.permissions import AllowAny
 
 
 class CookieTokenObtainPairView(TokenObtainPairView):
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
         refresh_token = response.data.get("refresh")
@@ -38,6 +39,7 @@ class CookieTokenObtainPairView(TokenObtainPairView):
 
 
 class CookieTokenRefreshView(TokenRefreshView):
+    @permission_classes([AllowAny])
     def post(self, request, *args, **kwargs):
         refresh = request.COOKIES.get("refresh_token")
 
