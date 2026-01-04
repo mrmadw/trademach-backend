@@ -85,7 +85,7 @@ def get_user(request):
 
 
 @api_view(['GET'])
-@permission_classes([AllowAnny])
+@permission_classes([AllowAny])
 def get_listings(request):
     listings = Listing.objects.all()
     serializer = ListingSerializer(listings, many=True)
