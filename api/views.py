@@ -31,8 +31,8 @@ class CookieTokenObtainPairView(TokenObtainPairView):
                 "refresh_token",
                 refresh_token,
                 httponly=True,
-                secure=False,  # True in production
-                samesite="Lax",
+                secure=True,  
+                samesite="None",
             )
         return response
 
