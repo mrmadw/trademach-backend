@@ -210,6 +210,7 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIALACCOUNT_ADAPTER = "api.adapters.CustomSocialAccountAdapter"
 
-LOGIN_REDIRECT_URL = "http://localhost:5173/auth/callback"
-LOGOUT_REDIRECT_URL = "http://localhost:5173/auth/callback"
+LOGIN_REDIRECT_URL = "https://trademach.site/dashboard"
+LOGOUT_REDIRECT_URL = "https://trademach.site/"
 
+SOCIALACCOUNT_LOGIN_ON_GET = True
