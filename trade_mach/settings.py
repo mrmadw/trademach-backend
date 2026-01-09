@@ -210,6 +210,22 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIALACCOUNT_ADAPTER = "api.adapters.CustomSocialAccountAdapter"
 
+
+
+# cookies
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SECURE = True
+
+# allow frontend domain
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.trademach.site",
+]
+
+
+
 LOGIN_REDIRECT_URL = "https://trademach.site/dashboard"
 LOGOUT_REDIRECT_URL = "https://trademach.site/"
 
